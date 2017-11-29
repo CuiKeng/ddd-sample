@@ -23,7 +23,7 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-$app->withFacades();
+// $app->withFacades();
 
 // $app->withEloquent();
 
@@ -82,7 +82,7 @@ $app->singleton(
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\CargoBC\Provider\CargoBCServiceProvider::class);
-$app->register(App\MockBC\Provider\MockBCServiceProvider::class);
+$app->register(App\LogBC\Provider\LogBCServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
