@@ -48,6 +48,21 @@ $app->singleton(
     Laravel\Lumen\Console\Kernel::class
 );
 
+$app->singleton(
+    App\Common\ICommandDispatcher::class,
+    App\Common\CommandDispatcher::class
+);
+
+$app->singleton(
+    App\Common\IEventDispatcher::class,
+    App\Common\EventDispatcher::class
+);
+
+$app->singleton(
+    App\Common\IMessageDispatcher::class,
+    App\Common\MessageDispatcher::class
+);
+
 /*
 |--------------------------------------------------------------------------
 | Register Middleware
@@ -82,7 +97,8 @@ $app->singleton(
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(App\CargoBC\Provider\CargoBCServiceProvider::class);
-$app->register(App\LogBC\Provider\LogBCServiceProvider::class);
+$app->register(App\CargoLogBC\Provider\LogBCServiceProvider::class);
+$app->register(App\ConferenceManagementBC\Provider\ConferenceManagementBCServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\LogBC\Saga;
+namespace App\CargoLogBC\Saga;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Psr\Log\LoggerInterface;
@@ -24,7 +24,7 @@ class LogSaga implements ShouldQueue
     {
         $event->listen(
             'App\CargoBC\Domain\CargoCreated',
-            'App\LogBC\Saga\LogSaga@onCargoCreated'
+            'App\CargoLogBC\Saga\LogSaga@onCargoCreated'
         );
     }
     

@@ -21,3 +21,10 @@ $router->group([
     $router->post('cargo/create', 'CargoController@create');
     $router->get('cargo/{uuid}', 'CargoController@get');
 });
+
+
+$router->group([
+    'namespace' => 'App\ConferenceManagementBC\Http\Controller'
+], function ($router) {
+    $router->post('conference/create', 'ConferenceController@create');
+});

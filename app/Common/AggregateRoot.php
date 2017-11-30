@@ -19,7 +19,7 @@ abstract class AggregateRoot implements IAggregateRoot
     {
         $this->handle($event);
         
-        $this->uncommittedEvents[] = $event;
+        $this->uncommittedEvents->push($event);
     }
     
     public function getUncommittedEvents(): Collection
