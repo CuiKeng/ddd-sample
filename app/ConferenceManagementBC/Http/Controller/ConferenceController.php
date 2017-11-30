@@ -29,18 +29,18 @@ class ConferenceController extends Controller
     
     public function create()
     {
-        $command = app()->make(CreateConferenceCommand::class, [
-            'uuid' => Uuid::uuid4(),
-            'ownerName' => 'LiLei',
-            'ownerEmail' => 'LiLei@163.com',
-            'slug' => 'This is slug',
-            'name' => 'This is name',
-            'description' => 'This is description',
-            'location' => 'This is location',
-            'tagline' => 'This is tagline',
-            'startDate' => new \DateTime(),
-            'endDate' => new \DateTime()
-        ]);
+        $command = new CreateConferenceCommand(
+            Uuid::uuid4(), 
+            'LiLei',
+            'LiLei@163.com',
+            'This is slug',
+            'This is name',
+            'This is description',
+            'This is location',
+            'This is tagline',
+            \DateTime::createFromFormat('Y-m-d H:i', '2017-11-30 12:00'),
+            \DateTime::createFromFormat('Y-m-d H:i', '2017-11-30 12:00')
+        );
 
         $this->commandDispatcher->dispatch($command);
     }

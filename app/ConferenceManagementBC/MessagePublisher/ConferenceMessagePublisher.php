@@ -21,8 +21,8 @@ class ConferenceMessagePublisher
     public function subscribe(IEventDispatcher $eventDispatcher)
     {
         $eventDispatcher->listen(
-            'App\ConferenceManagementBC\Domain\Event\ConferenceCreated',
-            'App\ConferenceManagementBC\MessagePublisher\ConferenceMessagePublisher@handleConferenceCreated'
+            ConferenceCreated::class,
+            self::class . '@handleConferenceCreated'
         );
     }
     

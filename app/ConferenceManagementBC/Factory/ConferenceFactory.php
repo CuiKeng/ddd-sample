@@ -24,24 +24,17 @@ class ConferenceFactory implements IConferenceFactory
         \DateTime $startDate,
         \DateTime $endDate
     ) {
-        $conferenceInfo = app()->make(ConferenceInfo::class, [
-            'slug' => $slug,
-            'name' => $name,
-            'description' => $description,
-            'location' => $location,
-            'tagline' => $tagline,
-            'startDate' => $startDate,
-            'endDate' => $endDate
-        ]);
-        $conferenceOwner = app()->make(ConferenceOwner::class, [
-            'name' => $ownerName,
-            'email' => $ownerEmail
-        ]);
-        $conference = app()->make(Conference::class, [
-            'uuid' => $uuid,
-            'conferenceInfo' => $conferenceInfo,
-            'conferenceOwner' => $conferenceOwner
-        ]);
+        $conferenceInfo = new ConferenceInfo(
+            $slug,
+            $name,
+            $description,
+            $location,
+            $tagline,
+            $startDate,
+            $endDate
+        );
+        $conferenceOwner = new ConferenceOwner($ownerName, $ownerEmail);
+        $conference = new Conference($uuid, $conferenceInfo, $conferenceOwner);
         
         return $conference;
     }
