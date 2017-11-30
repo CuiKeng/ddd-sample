@@ -9,15 +9,15 @@ class ConferenceCreatedMessage
     /**
      * @var string
      */
-    private $conferenceId;
+    private $uuid;
     
-    public function __construct(string $conferenceId)
+    public function __construct(string $uuid)
     {
-        $this->conferenceId = $conferenceId;
+        $this->uuid = $uuid;
     }
     
-    public function getConferenceId(): string
+    public function getUuid(): string
     {
-        return $this->conferenceId;
+        return $this->uuid;
     }
 }

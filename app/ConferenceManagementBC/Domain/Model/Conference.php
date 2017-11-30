@@ -40,7 +40,11 @@ class Conference extends AggregateRoot
     {
         parent::__construct();
         
-        $this->applyEvent(new ConferenceCreated($uuid, $conferenceInfo, $conferenceOwner));
+        $this->applyEvent(app()->make(ConferenceCreated::class, [
+            'uuid' => $uuid,
+            'conferenceInfo' => $conferenceInfo,
+            'conferenceOwner' => $conferenceOwner
+        ]));
     }
     
     protected function handleConferenceCreated(ConferenceCreated $event): void

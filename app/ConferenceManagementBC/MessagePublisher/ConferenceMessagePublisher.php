@@ -28,6 +28,8 @@ class ConferenceMessagePublisher
     
     public function handleConferenceCreated(ConferenceCreated $event): void
     {
-        $this->messageDispatcher->fire(new ConferenceCreatedMessage($event->getUuid()->toString()));
+        $this->messageDispatcher->fire(app()->make(ConferenceCreatedMessage::class, [
+            'uuid' => $event->getUuid()->toString()
+        ]));
     }
 }
