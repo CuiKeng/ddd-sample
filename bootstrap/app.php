@@ -96,8 +96,6 @@ $app->singleton(
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
-$app->register(App\CargoBC\Provider\CargoBCServiceProvider::class);
-$app->register(App\CargoLogBC\Provider\LogBCServiceProvider::class);
 $app->register(App\ConferenceManagementBC\Provider\ConferenceManagementBCServiceProvider::class);
 
 /*

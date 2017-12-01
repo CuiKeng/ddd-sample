@@ -16,20 +16,16 @@ class ConferenceFactory implements IConferenceFactory
         Uuid $uuid,
         string $ownerName,
         string $ownerEmail,
-        string $slug,
         string $name,
         string $description,
         string $location,
-        string $tagline,
         \DateTime $startDate,
         \DateTime $endDate
     ) {
         $conferenceInfo = new ConferenceInfo(
-            $slug,
             $name,
             $description,
             $location,
-            $tagline,
             $startDate,
             $endDate
         );

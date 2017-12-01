@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\ConferenceManagementBC\CommandHandler;
 
 use App\ConferenceManagementBC\Command\CreateConferenceCommand;
-use App\ConferenceManagementBC\Factory\ConferenceFactory;
 use App\ConferenceManagementBC\Domain\Repository\IConferenceRepository;
 use App\ConferenceManagementBC\Domain\Factory\IConferenceFactory;
 
@@ -33,11 +32,9 @@ class CreateConferenceCommandHandler
             $command->uuid,
             $command->ownerName,
             $command->ownerEmail,
-            $command->slug,
             $command->name,
             $command->description,
             $command->location,
-            $command->tagline,
             $command->startDate,
             $command->endDate
         );

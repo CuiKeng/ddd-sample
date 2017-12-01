@@ -7,12 +7,7 @@ namespace App\ConferenceManagementBC\Domain\Model;
 use App\Common\IValueObject;
 
 class ConferenceInfo implements IValueObject
-{
-    /**
-     * @var string
-     */
-    private $slug;
-    
+{    
     /**
      * @var string
      */
@@ -29,11 +24,6 @@ class ConferenceInfo implements IValueObject
     private $location;
     
     /**
-     * @var string
-     */
-    private $tagline;
-    
-    /**
      * @var \DateTime
      */
     private $startDate;
@@ -43,20 +33,13 @@ class ConferenceInfo implements IValueObject
      */
     private $endDate;
     
-    public function __construct(string $slug, string $name, string $description, string $location, string $tagline, \DateTime $startDate, \DateTime $endDate)
+    public function __construct(string $name, string $description, string $location, \DateTime $startDate, \DateTime $endDate)
     {
-        $this->slug = $slug;
         $this->name = $name;
         $this->description = $description;
         $this->location = $location;
-        $this->tagline = $tagline;
         $this->startDate = $startDate;
         $this->endDate = $endDate;
-    }
-    
-    public function getSlug(): string
-    {
-        return $this->slug;
     }
     
     public function getName(): string
@@ -72,11 +55,6 @@ class ConferenceInfo implements IValueObject
     public function getLocation(): string
     {
         return $this->location;
-    }
-    
-    public function getTagline(): string
-    {
-        return $this->tagline;
     }
     
     public function getStartDate(): \DateTime

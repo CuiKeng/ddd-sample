@@ -26,11 +26,6 @@ class CreateConferenceCommand
     /**
      * @var string
      */
-    private $slug;
-    
-    /**
-     * @var string
-     */
     private $name;
     
     /**
@@ -42,11 +37,6 @@ class CreateConferenceCommand
      * @var string
      */
     private $location;
-    
-    /**
-     * @var string
-     */
-    private $tagline;
     
     /**
      * @var \DateTime
@@ -62,22 +52,18 @@ class CreateConferenceCommand
         Uuid $uuid,
         string $ownerName,
         string $ownerEmail,
-        string $slug,
         string $name, 
         string $description,
         string $location,
-        string $tagline,
         \DateTime $startDate,
         \DateTime $endDate
     ) {
         $this->uuid = $uuid;
         $this->ownerName = $ownerName;
         $this->ownerEmail = $ownerEmail;
-        $this->slug = $slug;
         $this->name = $name;
         $this->description = $description;
         $this->location = $location;
-        $this->tagline = $tagline;
         $this->startDate = $startDate;
         $this->endDate = $endDate;
     }

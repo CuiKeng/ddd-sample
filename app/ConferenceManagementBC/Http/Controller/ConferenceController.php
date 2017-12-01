@@ -33,15 +33,18 @@ class ConferenceController extends Controller
             Uuid::uuid4(), 
             'LiLei',
             'LiLei@163.com',
-            'This is slug',
             'This is name',
             'This is description',
             'This is location',
-            'This is tagline',
             \DateTime::createFromFormat('Y-m-d H:i', '2017-11-30 12:00'),
             \DateTime::createFromFormat('Y-m-d H:i', '2017-11-30 12:00')
         );
 
         $this->commandDispatcher->dispatch($command);
+    }
+    
+    public function update()
+    {
+        
     }
 }
