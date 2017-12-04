@@ -31,11 +31,6 @@ class Conference extends AggregateRoot
      */
     private $seatTypes;
     
-    /**
-     * @var bool
-     */
-    private $isPublished;
-    
     public function __construct(Uuid $uuid, ConferenceInfo $conferenceInfo, ConferenceOwner $conferenceOwner)
     {
         parent::__construct();
@@ -47,12 +42,26 @@ class Conference extends AggregateRoot
         ]));
     }
     
+    public function getUuid(): Uuid
+    {
+        return $this->uuid;
+    }
+    
+    public function getConferenceInfo(): ConferenceInfo
+    {
+        return $this->conferenceInfo;
+    }
+    
+    public function getConferenceOwner(): ConferenceOwner
+    {
+        return $this->conferenceOwner;
+    }
+    
     protected function handleConferenceCreated(ConferenceCreated $event): void
     {
         $this->uuid = $event->getUuid();
         $this->conferenceInfo = $event->getConferenceInfo();
         $this->conferenceOwner = $event->getConferenceOwner();
         $this->seatTypes = Collection::make([]);
-        $this->isPublished = false;
     }
 }

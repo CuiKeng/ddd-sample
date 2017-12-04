@@ -27,4 +27,5 @@ $router->group([
     'namespace' => 'App\ConferenceManagementBC\Http\Controller'
 ], function ($router) {
     $router->post('conference/create', 'ConferenceController@create');
+    $router->post('conference/update', 'ConferenceController@update');
 });

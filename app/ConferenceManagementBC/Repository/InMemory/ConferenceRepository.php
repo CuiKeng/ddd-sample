@@ -8,6 +8,7 @@ use App\ConferenceManagementBC\Domain\Repository\IConferenceRepository;
 use App\ConferenceManagementBC\Domain\Model\Conference;
 use Illuminate\Support\Collection;
 use App\Common\IEventDispatcher;
+use Ramsey\Uuid\Uuid;
 
 class ConferenceRepository implements IConferenceRepository
 {
@@ -29,10 +30,15 @@ class ConferenceRepository implements IConferenceRepository
     
     public function store(Conference $conference): void
     {
-        $this->list[] = $conference;
+        $this->list[$conference->getUuid()->toString()] = $conference;
         
         $conference->getUncommittedEvents()->each(function ($item, $key) {
             $this->eventDispatcher->fire($item);
         });
+    }
+    
+    public function get(Uuid $uuid): ?Conference
+    {
+        return $this->list[$uuid->toString()] ?? null;
     }
 }

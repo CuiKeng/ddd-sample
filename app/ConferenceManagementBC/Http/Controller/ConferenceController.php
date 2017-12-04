@@ -45,6 +45,41 @@ class ConferenceController extends Controller
     
     public function update()
     {
+        $refClass = new \ReflectionClass(Car::class);
         
+        $car = $refClass->newInstanceWithoutConstructor();
+        
+        $wheel = new \ReflectionProperty($car, 'wheel');
+        $wheel->setAccessible(true);
+        $wheel->setValue($car, 'aaa');
+        
+        
+        var_dump($car->getWheel());
     }
 }
+
+class Car
+{
+    private $wheel;
+    
+    public function __construct(string $wheel)
+    {
+        $this->wheel = $wheel;
+    }
+    
+    public function getWheel()
+    {
+        return $this->wheel;
+    }
+}
+
+class Wheel
+{
+    private $name;
+    
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+}
+
