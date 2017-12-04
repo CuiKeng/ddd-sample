@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\ConferenceManagementBC\Http\Controller;
 
 use App\ConferenceManagementBC\Domain\Repository\IConferenceRepository;
-use App\Common\ICommandDispatcher;
+use App\Core\CommandBus\ICommandDispatcher;
 use App\ConferenceManagementBC\Command\CreateConferenceCommand;
 use Ramsey\Uuid\Uuid;
 

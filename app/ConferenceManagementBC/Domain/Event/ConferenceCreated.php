@@ -6,7 +6,7 @@ namespace App\ConferenceManagementBC\Domain\Event;
 
 use App\ConferenceManagementBC\Domain\Model\ConferenceInfo;
 use App\ConferenceManagementBC\Domain\Model\ConferenceOwner;
-use App\Common\IEvent;
+use App\Core\Domain\IEvent;
 use Ramsey\Uuid\Uuid;
 
 class ConferenceCreated implements IEvent

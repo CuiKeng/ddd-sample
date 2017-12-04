@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exception;
+namespace App\Core\Exception;
 
 use Exception;
 use Illuminate\Validation\ValidationException;

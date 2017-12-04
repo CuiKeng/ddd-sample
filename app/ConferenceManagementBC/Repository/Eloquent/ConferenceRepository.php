@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\ConferenceManagementBC\Repository\Eloquent;
 
 use App\ConferenceManagementBC\Domain\Repository\IConferenceRepository;
-use App\Common\IEventDispatcher;
+use App\Core\EventBus\IEventDispatcher;
 use App\ConferenceManagementBC\Domain\Model\Conference;
 use Ramsey\Uuid\Uuid;
 use App\ConferenceManagementBC\Domain\Model\ConferenceInfo;
@@ -14,7 +14,7 @@ use App\ConferenceManagementBC\Domain\Model\ConferenceOwner;
 class ConferenceRepository implements IConferenceRepository
 {
     /**
-     * @var Dispatcher
+     * @var IEventDispatcher
      */
     private $eventDispatcher;
     

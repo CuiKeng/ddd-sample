@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\ConferenceManagementBC\Domain\Model;
 
-use App\Common\IValueObject;
+use App\Core\Domain\IValueObject;
 
 class ConferenceOwner implements IValueObject
 {

@@ -15,6 +15,10 @@ class ConferenceRepository extends EntityRepository implements IConferenceReposi
     {
         $this->getEntityManager()->persist($conference);
         $this->getEntityManager()->flush();
+        
+        $conference->getUncommittedEvents()->each(function ($item, $key) {
+            $this->eventDispatcher->fire($item);
+        });
     }
     
     public function get(Uuid $uuid): ?Conference

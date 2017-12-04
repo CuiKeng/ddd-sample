@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\ConferenceManagementBC\Domain\Model;
 
-use App\Common\AggregateRoot;
+use App\Core\Domain\AggregateRoot;
 use Illuminate\Support\Collection;
 use App\ConferenceManagementBC\Domain\Event\ConferenceCreated;
 use Ramsey\Uuid\Uuid;

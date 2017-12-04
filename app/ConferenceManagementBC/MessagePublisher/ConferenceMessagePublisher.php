@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace App\ConferenceManagementBC\MessagePublisher;
 
 use App\ConferenceManagementBC\Domain\Event\ConferenceCreated;
-use Illuminate\Events\Dispatcher;
 use App\ConferenceManagementBC\Message\ConferenceCreatedMessage;
-use App\Common\IEventDispatcher;
+use App\Core\EventBus\IEventDispatcher;
+use App\Core\MessageBus\IMessageDispatcher;
 
 class ConferenceMessagePublisher
 {
+    /**
+     * @var IMessageDispatcher
+     */
     private $messageDispatcher;
     
-    public function __construct(Dispatcher $messageDispatcher)
+    public function __construct(IMessageDispatcher $messageDispatcher)
     {
         $this->messageDispatcher = $messageDispatcher;
     }

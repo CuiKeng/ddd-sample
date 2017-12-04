@@ -23,9 +23,7 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
-// $app->withFacades();
-
-// $app->withEloquent();
+$app->configure('doctrine');
 
 /*
 |--------------------------------------------------------------------------
@@ -40,27 +38,12 @@ $app = new Laravel\Lumen\Application(
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exception\Handler::class
+    App\Core\Exception\Handler::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     Laravel\Lumen\Console\Kernel::class
-);
-
-$app->singleton(
-    App\Common\ICommandDispatcher::class,
-    App\Common\CommandDispatcher::class
-);
-
-$app->singleton(
-    App\Common\IEventDispatcher::class,
-    App\Common\EventDispatcher::class
-);
-
-$app->singleton(
-    App\Common\IMessageDispatcher::class,
-    App\Common\MessageDispatcher::class
 );
 
 /*
@@ -93,9 +76,7 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
+$app->register(App\Core\Provider\CoreServiceProvider::class);
 $app->register(App\ConferenceManagementBC\Provider\ConferenceManagementBCServiceProvider::class);
 
 /*

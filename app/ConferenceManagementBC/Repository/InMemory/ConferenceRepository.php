@@ -7,13 +7,13 @@ namespace App\ConferenceManagementBC\Repository\InMemory;
 use App\ConferenceManagementBC\Domain\Repository\IConferenceRepository;
 use App\ConferenceManagementBC\Domain\Model\Conference;
 use Illuminate\Support\Collection;
-use App\Common\IEventDispatcher;
+use App\Core\EventBus\IEventDispatcher;
 use Ramsey\Uuid\Uuid;
 
 class ConferenceRepository implements IConferenceRepository
 {
     /**
-     * @var Dispatcher
+     * @var IEventDispatcher
      */
     private $eventDispatcher;
     

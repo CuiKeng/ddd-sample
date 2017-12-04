@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\ConferenceManagementBC\Domain\Model;
 
-use App\Common\IEntity;
+use App\Core\Domain\IEntity;
 
 class SeatType implements IEntity
 {
