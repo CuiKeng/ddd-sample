@@ -16,6 +16,7 @@ use App\Core\MessageBus\IMessageDispatcher;
 use App\Core\MessageBus\MessageDispatcher;
 use Doctrine\DBAL\Types\Type;
 use App\ConferenceManagementBC\Repository\Doctrine\Type\UuidType;
+use Illuminate\Contracts\Queue\Factory as QueueFactoryContract;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -51,17 +52,29 @@ class CoreServiceProvider extends ServiceProvider
     
     protected function registerCommandDispatcher(): void
     {
-        $this->app->singleton(ICommandDispatcher::class, CommandDispatcher::class);
+        $this->app->singleton(ICommandDispatcher::class, function ($app) {
+            return new CommandDispatcher($app, function ($connection = null) use ($app) {
+                return $app[QueueFactoryContract::class]->connection($connection);
+            });
+        });
     }
     
     protected function registerEventDispatcher(): void
     {
-        $this->app->singleton(IEventDispatcher::class, EventDispatcher::class);
+        $this->app->singleton(IEventDispatcher::class, function ($app) {
+            return (new EventDispatcher($app))->setQueueResolver(function () use ($app) {
+                return $app->make(QueueFactoryContract::class);
+            });
+        });
     }
     
     protected function registerMessageDispatcher(): void
     {
-        $this->app->singleton(IMessageDispatcher::class, MessageDispatcher::class);
+        $this->app->singleton(IMessageDispatcher::class, function ($app) {
+            return (new MessageDispatcher($app))->setQueueResolver(function () use ($app) {
+                return $app->make(QueueFactoryContract::class);
+            });
+        });
     }
     
     protected function bootDoctrineType(): void

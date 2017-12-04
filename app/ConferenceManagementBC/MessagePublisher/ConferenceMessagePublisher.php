@@ -8,8 +8,9 @@ use App\ConferenceManagementBC\Domain\Event\ConferenceCreated;
 use App\ConferenceManagementBC\Message\ConferenceCreatedMessage;
 use App\Core\EventBus\IEventDispatcher;
 use App\Core\MessageBus\IMessageDispatcher;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class ConferenceMessagePublisher
+class ConferenceMessagePublisher implements ShouldQueue
 {
     /**
      * @var IMessageDispatcher

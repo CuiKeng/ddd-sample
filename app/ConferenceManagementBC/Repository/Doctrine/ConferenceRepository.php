@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityRepository;
 use App\ConferenceManagementBC\Domain\Repository\IConferenceRepository;
 use App\ConferenceManagementBC\Domain\Model\Conference;
 use Ramsey\Uuid\Uuid;
+use App\Core\EventBus\IEventDispatcher;
 
 class ConferenceRepository extends EntityRepository implements IConferenceRepository
 {
@@ -16,8 +17,9 @@ class ConferenceRepository extends EntityRepository implements IConferenceReposi
         $this->getEntityManager()->persist($conference);
         $this->getEntityManager()->flush();
         
-        $conference->getUncommittedEvents()->each(function ($item, $key) {
-            $this->eventDispatcher->fire($item);
+        $eventDispatcher = app()->make(IEventDispatcher::class);
+        $conference->getUncommittedEvents()->each(function ($item, $key) use ($eventDispatcher) {
+            $eventDispatcher->fire($item);
         });
     }
     

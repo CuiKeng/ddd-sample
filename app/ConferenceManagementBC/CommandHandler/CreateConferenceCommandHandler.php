@@ -40,8 +40,5 @@ class CreateConferenceCommandHandler
             $command->endDate
         );
         $this->conferenceRepository->store($conference);
-//         $conference = $this->conferenceRepository->get(Uuid::fromString('be4c6282-9187-4579-8a54-e56e44e61c77'));
-        
-//         var_dump($this->conferenceRepository->get($command->uuid));
     }
 }

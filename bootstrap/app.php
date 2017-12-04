@@ -78,6 +78,7 @@ $app->singleton(
 
 $app->register(App\Core\Provider\CoreServiceProvider::class);
 $app->register(App\ConferenceManagementBC\Provider\ConferenceManagementBCServiceProvider::class);
+$app->register(App\PaymentBC\Provider\PaymentBCServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
