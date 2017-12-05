@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\ConferenceManagementBC\Http\Controller;
 
-use App\ConferenceManagementBC\Domain\Repository\IConferenceRepository;
 use App\Core\CommandBus\ICommandDispatcher;
 use App\ConferenceManagementBC\Command\CreateConferenceCommand;
 use Ramsey\Uuid\Uuid;
+use App\ConferenceManagementBC\Query\ConferenceQueryService;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ConferenceController extends Controller
 {
@@ -17,17 +18,17 @@ class ConferenceController extends Controller
     private $commandDispatcher;
     
     /**
-     * @var IConferenceRepository
+     * @var ConferenceQueryService
      */
-    private $conferenceRepository;
+    private $conferenceQueryService;
     
-    public function __construct(ICommandDispatcher $commandDispatcher, IConferenceRepository $conferenceRepository)
+    public function __construct(ICommandDispatcher $commandDispatcher, ConferenceQueryService $conferenceQueryService)
     {
         $this->commandDispatcher = $commandDispatcher;
-        $this->conferenceRepository = $conferenceRepository;
+        $this->conferenceQueryService = $conferenceQueryService;
     }
     
-    public function create()
+    public function create(): void
     {
         $command = new CreateConferenceCommand(
             Uuid::uuid4(), 
@@ -43,43 +44,28 @@ class ConferenceController extends Controller
         $this->commandDispatcher->dispatch($command);
     }
     
-    public function update()
+    public function update(string $id): void
     {
-        $refClass = new \ReflectionClass(Car::class);
         
-        $car = $refClass->newInstanceWithoutConstructor();
-        
-        $wheel = new \ReflectionProperty($car, 'wheel');
-        $wheel->setAccessible(true);
-        $wheel->setValue($car, 'aaa');
-        
-        
-        var_dump($car->getWheel());
-    }
-}
-
-class Car
-{
-    private $wheel;
-    
-    public function __construct(string $wheel)
-    {
-        $this->wheel = $wheel;
     }
     
-    public function getWheel()
+    public function delete(string $id): void
     {
-        return $this->wheel;
+        
     }
-}
-
-class Wheel
-{
-    private $name;
     
-    public function __construct(string $name)
+    public function view(string $id): array
     {
-        $this->name = $name;
+        $conference = $this->conferenceQueryService->findConferenceById($id);
+        if (is_null($conference)) {
+            throw new HttpException(404);
+        }
+        
+        return $conference->toArray();
+    }
+    
+    public function index(): void
+    {
+        
     }
 }
-

@@ -35,8 +35,8 @@ class ConferenceRepository implements IConferenceRepository
             'name' => $conference->getConferenceInfo()->getName(),
             'description' => $conference->getConferenceInfo()->getDescription(),
             'location' => $conference->getConferenceInfo()->getLocation(),
-            'start_time' => $conference->getConferenceInfo()->getStartDate()->format('Y-m-d H:i:s'),
-            'end_time' => $conference->getConferenceInfo()->getEndDate()->format('Y-m-d H:i:s')
+            'start_date' => $conference->getConferenceInfo()->getStartDate()->format('Y-m-d H:i:s'),
+            'end_date' => $conference->getConferenceInfo()->getEndDate()->format('Y-m-d H:i:s')
         ]);
         
         $conference->getUncommittedEvents()->each(function ($item, $key) {
@@ -66,8 +66,8 @@ class ConferenceRepository implements IConferenceRepository
             'name' => 'name',
             'description' => 'description',
             'location' => 'location',
-            'startDate' => 'start_time',
-            'endDate' => 'end_time'
+            'startDate' => 'start_date',
+            'endDate' => 'end_date'
         ];
         foreach ($conferenceInfoPropertyMapping as $property => $field) {
             $propertyRefl = new \ReflectionProperty(ConferenceInfo::class, $property);

@@ -7,7 +7,7 @@
         <field name="name" type="string" />
         <field name="description" type="string" />
         <field name="location" type="string" />
-        <field name="startDate" type="datetime" column="start_time" />
-        <field name="endDate" type="datetime" column="end_time" />
+        <field name="startDate" type="datetime" column="start_date" />
+        <field name="endDate" type="datetime" column="end_date" />
     </embeddable>
 </doctrine-mapping>
