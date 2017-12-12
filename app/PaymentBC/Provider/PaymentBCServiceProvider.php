@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace App\PaymentBC\Provider;
 
 use Illuminate\Support\ServiceProvider;
-use App\Core\MessageBus\IMessageDispatcher;
-use App\PaymentBC\ProcessManager\PaymentProcessManager;
 use App\PaymentBC\Console\Command\MessageLoopCommand;
 
 class PaymentBCServiceProvider extends ServiceProvider
@@ -20,7 +18,7 @@ class PaymentBCServiceProvider extends ServiceProvider
         $this->registerCommands();
     }
     
-    public function boot(IMessageDispatcher $messageDispatcher): void
+    public function boot(): void
     {
         
     }
