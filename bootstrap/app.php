@@ -23,6 +23,7 @@ $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
 
+$app->configure('database');
 $app->configure('doctrine');
 
 /*
@@ -76,9 +77,11 @@ $app->singleton(
 |
 */
 
+$app->register(Illuminate\Redis\RedisServiceProvider::class);
 $app->register(App\Core\Provider\CoreServiceProvider::class);
 $app->register(App\ConferenceManagementBC\Provider\ConferenceManagementBCServiceProvider::class);
 $app->register(App\PaymentBC\Provider\PaymentBCServiceProvider::class);
+$app->register(App\RegistrationBC\Provider\RegistrationBCServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

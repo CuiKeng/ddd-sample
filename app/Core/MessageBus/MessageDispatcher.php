@@ -8,5 +8,5 @@ use Illuminate\Events\Dispatcher;
 
 class MessageDispatcher extends Dispatcher implements IMessageDispatcher
 {
-
+    
 }

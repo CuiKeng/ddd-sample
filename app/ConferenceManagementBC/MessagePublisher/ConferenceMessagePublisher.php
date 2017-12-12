@@ -9,6 +9,7 @@ use App\ConferenceManagementBC\Message\ConferenceCreatedMessage;
 use App\Core\EventBus\IEventDispatcher;
 use App\Core\MessageBus\IMessageDispatcher;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Contracts\Broadcasting\Factory as BroadcastFactory;
 
 class ConferenceMessagePublisher implements ShouldQueue
 {

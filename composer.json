@@ -9,7 +9,9 @@
         "laravel/lumen-framework": "5.5.*",
         "vlucas/phpdotenv": "~2.2",
         "ramsey/uuid": "^3.7",
-        "doctrine/orm": "^2.5"
+        "doctrine/orm": "^2.5",
+        "predis/predis": "^1.1",
+        "illuminate/redis": "^5.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
